@@ -17,15 +17,21 @@ const App = () => {
 
   const handleForm=async (e)=>{
     e.preventDefault();
-    if(InputValue.length>0){
+    if (InputValue.trim().length === 0) {
+    setErrors(true);
+    setDefi('');
+    return;
+  }
+    
       const meaning= dict.find((item)=>item.word.trim().toLowerCase()===InputValue.trim().toLowerCase());
       if(meaning){
         setErrors(false)
         setDefi(meaning.meaning);
       }else{
         setErrors(true)
+        setDefi('')
       }
-    }
+    
   }
   return (
     <div>
